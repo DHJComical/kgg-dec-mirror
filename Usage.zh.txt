@@ -1,0 +1,26 @@
+# KGG 解密工具 by LSR
+
+项目地址：https://git.unlock-music.dev/um/kgg-dec
+
+使用方法 (命令行)：
+
+1. 从酷狗安装目录拷贝 `infra.dll` 文件到 `kgg-dec.exe` 的目录。
+2. 启动 `kgg-dec.exe`，其中第一个参数为含有 `*.kgg` 文件的目录。
+
+或者：
+
+1. 将 `kgg-dec.exe` 与 `infra.dll` 拷贝到 KGG 所在目录。
+2. 双击 `kgg-dec.exe`，开始解密当前目录。
+
+其它参数：
+
+* `[--infra-dll </path/to/infra.dll>]`: 指定 `infra.dll` 的路径，默认为 `infra.dll`。
+* `[--scan-all-file-ext <0|1>]`: 是否扫描所有文件后缀名，默认为 `0` 只扫描 `kgg` 文件。
+* `[--db </path/to/KGMusicV3.db>]`: 指定 `KGMusicV3.db` 的路径，默认为 `%AppData%/Kugou8/KGMusicV3.db`。
+
+指定完参数后可以指定任意数量的文件或目录。
+
+错误排查：
+
+1. 需要至少播放一次 KGG 文件，并确保酷狗能正常播放。
+2. 文件后缀名嗅探代码只支持：`ogg` / `flac`，其他格式默认回退到 `mp3`。

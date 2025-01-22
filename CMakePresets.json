@@ -1,0 +1,67 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 19,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "hidden": true,
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "mingw",
+      "inherits": "default",
+      "description": "Configure for MinGW",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/mingw",
+      "cacheVariables": {
+        "CMAKE_SYSTEM_NAME": "Windows",
+        "CMAKE_C_COMPILER": "i686-w64-mingw32-gcc-win32",
+        "CMAKE_CXX_COMPILER": "i686-w64-mingw32-g++-win32",
+        "CMAKE_FIND_LIBRARY_SUFFIXES": ".a",
+        "BUILD_SHARED_LIBS": "OFF",
+        "CMAKE_EXE_LINKER_FLAGS": "-static -static-libgcc -static-libstdc++ -lucrt"
+      }
+    },
+    {
+      "name": "vs",
+      "inherits": "default",
+      "description": "Configure for Visual Studio",
+      "generator": "Visual Studio 17 2022",
+      "binaryDir": "${sourceDir}/build/vs2022",
+      "architecture": "Win32"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "mingw-debug",
+      "configurePreset": "mingw",
+      "description": "Build using MinGW (Debug)",
+      "configuration": "Debug"
+    },
+    {
+      "name": "mingw-release",
+      "configurePreset": "mingw",
+      "description": "Build using MinGW (Release)",
+      "configuration": "Release"
+    },
+    {
+      "name": "vs-debug",
+      "configurePreset": "vs",
+      "description": "Build using VS (Debug)",
+      "configuration": "Debug"
+    },
+    {
+      "name": "vs-release",
+      "configurePreset": "vs",
+      "description": "Build using VS (Release)",
+      "configuration": "Release"
+    }
+  ]
+}
